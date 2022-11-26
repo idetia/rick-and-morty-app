@@ -1,0 +1,98 @@
+<div class="action-bar">
+  <div class="container">
+    <form [formGroup]="filterForm">
+      <div class="search-field">
+        <i class="bi bi-search"></i>
+        <input
+          type="text"
+          placeholder="Search by name ..."
+          formControlName="search"
+        />
+      </div>
+
+      <div class="filters">
+        <select
+          aria-label="Status"
+          class="form-select"
+          formControlName="status"
+        >
+          <option value="">Status</option>
+          <option [value]="characterStatusAlive">
+            {{ characterStatusAlive }}
+          </option>
+          <option [value]="characterStatusDead">
+            {{ characterStatusDead }}
+          </option>
+          <option [value]="characterStatusUnknown">
+            {{ characterStatusUnknown }}
+          </option>
+        </select>
+
+        <select
+          aria-label="Gender"
+          class="form-select"
+          formControlName="gender"
+        >
+          <option value="">Gender</option>
+          <option [value]="characterGenderMale">
+            {{ characterGenderMale }}
+          </option>
+          <option [value]="characterGenderFemale">
+            {{ characterGenderFemale }}
+          </option>
+          <option [value]="characterGenderGenderless">
+            {{ characterGenderGenderless }}
+          </option>
+          <option [value]="characterGenderUnknown">
+            {{ characterGenderUnknown }}
+          </option>
+        </select>
+      </div>
+    </form>
+  </div>
+</div>
+
+<section class="container characters-list">
+  <div class="loading">
+    <div class="spinner-border text-light" role="status" *ngIf="loading">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <div
+    class="no-results"
+    *ngIf="!loading && characters && characters.length == 0"
+  >
+    Oops!, what you are looking for is not in this universe.
+  </div>
+
+  <div class="items" *ngIf="characters">
+    <article *ngFor="let character of characters">
+      <div class="image">
+        <img [src]="character.image" [alt]="character.name" />
+      </div>
+      <div class="data">
+        <a class="name" [href]="character.url" target="_blank">{{
+          character.name
+        }}</a>
+        <div class="meta" [class]="'status-' + (character.status | lowercase)">
+          <span class="status">{{ character.status }}</span
+          >&nbsp;-&nbsp;
+          <span class="specie">{{ character.species }}</span>
+        </div>
+        <div class="block">
+          <div class="label">Last known location:</div>
+          <a class="info" [href]="character.location.url" target="_blank">{{
+            character.location.name
+          }}</a>
+        </div>
+        <div class="block">
+          <div class="label">First seen in:</div>
+          <a class="info" [href]="character.lastEpisode?.url" target="_blank">{{
+            character.lastEpisode?.name
+          }}</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>

@@ -1,1 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --color-dark: rgb(32, 35, 41);
+  --color-grey: rgb(60, 62, 68);
+  --color-orange: rgb(255, 152, 0);
+}
+
+html {
+  font-family: -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto",
+    "Helvetica", "Arial", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+  font-size: 10px;
+}
+
+body {
+  font-size: 1.6rem;
+  background-color: var(--color-dark);
+}

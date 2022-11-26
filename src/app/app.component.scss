@@ -1,0 +1,29 @@
+header {
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  background-image: url(../assets/images/bg-rick-and-morty.svg);
+  background-repeat: no-repeat;
+  background-position: 50% 100%;
+  background-size: 280px auto;
+
+  h1 {
+    font-weight: 900;
+    font-size: 5.625rem;
+    color: var(--color-dark);
+    text-align: center;
+  }
+}
+
+@media (max-width: 575px) {
+  header {
+    min-height: 200px;
+    background-size: 200px auto;
+
+    h1 {
+      font-size: 4rem;
+    }
+  }
+}
